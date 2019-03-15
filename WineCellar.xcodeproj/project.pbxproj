@@ -13,6 +13,9 @@
 		F74F7CF8223C486100EC2D66 /* WineCellar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F74F7CF6223C486100EC2D66 /* WineCellar.xcdatamodeld */; };
 		F74F7CFA223C486500EC2D66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F74F7CF9223C486500EC2D66 /* Assets.xcassets */; };
 		F74F7CFD223C486500EC2D66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F74F7CFB223C486500EC2D66 /* LaunchScreen.storyboard */; };
+		F74F7D05223C492100EC2D66 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74F7D04223C492100EC2D66 /* CoreDataStack.swift */; };
+		F74F7D07223C494D00EC2D66 /* WineExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74F7D06223C494D00EC2D66 /* WineExtension.swift */; };
+		F74F7D0A223C49F400EC2D66 /* WineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74F7D09223C49F400EC2D66 /* WineController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		F74F7CF9223C486500EC2D66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F74F7CFC223C486500EC2D66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F74F7CFE223C486500EC2D66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F74F7D04223C492100EC2D66 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		F74F7D06223C494D00EC2D66 /* WineExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineExtension.swift; sourceTree = "<group>"; };
+		F74F7D09223C49F400EC2D66 /* WineController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +64,24 @@
 			children = (
 				F74F7CEF223C486100EC2D66 /* AppDelegate.swift */,
 				F74F7CF1223C486100EC2D66 /* ViewController.swift */,
+				F74F7D09223C49F400EC2D66 /* WineController.swift */,
 				F74F7CF3223C486100EC2D66 /* Main.storyboard */,
 				F74F7CF9223C486500EC2D66 /* Assets.xcassets */,
 				F74F7CFB223C486500EC2D66 /* LaunchScreen.storyboard */,
 				F74F7CFE223C486500EC2D66 /* Info.plist */,
-				F74F7CF6223C486100EC2D66 /* WineCellar.xcdatamodeld */,
+				F74F7D08223C496C00EC2D66 /* Model */,
 			);
 			path = WineCellar;
+			sourceTree = "<group>";
+		};
+		F74F7D08223C496C00EC2D66 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F74F7D04223C492100EC2D66 /* CoreDataStack.swift */,
+				F74F7D06223C494D00EC2D66 /* WineExtension.swift */,
+				F74F7CF6223C486100EC2D66 /* WineCellar.xcdatamodeld */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +155,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F74F7D0A223C49F400EC2D66 /* WineController.swift in Sources */,
 				F74F7CF8223C486100EC2D66 /* WineCellar.xcdatamodeld in Sources */,
+				F74F7D07223C494D00EC2D66 /* WineExtension.swift in Sources */,
 				F74F7CF2223C486100EC2D66 /* ViewController.swift in Sources */,
 				F74F7CF0223C486100EC2D66 /* AppDelegate.swift in Sources */,
+				F74F7D05223C492100EC2D66 /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
