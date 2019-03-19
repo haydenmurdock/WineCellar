@@ -16,6 +16,8 @@
 		F74F7D05223C492100EC2D66 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74F7D04223C492100EC2D66 /* CoreDataStack.swift */; };
 		F74F7D07223C494D00EC2D66 /* WineExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74F7D06223C494D00EC2D66 /* WineExtension.swift */; };
 		F74F7D0A223C49F400EC2D66 /* WineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74F7D09223C49F400EC2D66 /* WineController.swift */; };
+		F74F7D0C223FF98D00EC2D66 /* Detail&CreateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74F7D0B223FF98D00EC2D66 /* Detail&CreateVC.swift */; };
+		F74F7D0E224002D200EC2D66 /* CameraPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74F7D0D224002D200EC2D66 /* CameraPreviewVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		F74F7D04223C492100EC2D66 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		F74F7D06223C494D00EC2D66 /* WineExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineExtension.swift; sourceTree = "<group>"; };
 		F74F7D09223C49F400EC2D66 /* WineController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineController.swift; sourceTree = "<group>"; };
+		F74F7D0B223FF98D00EC2D66 /* Detail&CreateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Detail&CreateVC.swift"; sourceTree = "<group>"; };
+		F74F7D0D224002D200EC2D66 /* CameraPreviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 				F74F7CF1223C486100EC2D66 /* ViewController.swift */,
 				F74F7D09223C49F400EC2D66 /* WineController.swift */,
 				F74F7CF3223C486100EC2D66 /* Main.storyboard */,
+				F74F7D0D224002D200EC2D66 /* CameraPreviewVC.swift */,
+				F74F7D0B223FF98D00EC2D66 /* Detail&CreateVC.swift */,
 				F74F7CF9223C486500EC2D66 /* Assets.xcassets */,
 				F74F7CFB223C486500EC2D66 /* LaunchScreen.storyboard */,
 				F74F7CFE223C486500EC2D66 /* Info.plist */,
@@ -157,7 +163,9 @@
 			files = (
 				F74F7D0A223C49F400EC2D66 /* WineController.swift in Sources */,
 				F74F7CF8223C486100EC2D66 /* WineCellar.xcdatamodeld in Sources */,
+				F74F7D0C223FF98D00EC2D66 /* Detail&CreateVC.swift in Sources */,
 				F74F7D07223C494D00EC2D66 /* WineExtension.swift in Sources */,
+				F74F7D0E224002D200EC2D66 /* CameraPreviewVC.swift in Sources */,
 				F74F7CF2223C486100EC2D66 /* ViewController.swift in Sources */,
 				F74F7CF0223C486100EC2D66 /* AppDelegate.swift in Sources */,
 				F74F7D05223C492100EC2D66 /* CoreDataStack.swift in Sources */,
