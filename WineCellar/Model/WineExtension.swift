@@ -6,11 +6,11 @@
 //  Copyright © 2019 Hayden Murdock. All rights reserved.
 //
 
-import Foundation
 import CoreData
+import UIKit
 
 extension Wine {
-    convenience init(name: String, color: String, notes: String, pairsWellWith: String, picture: Data, producer: String, rating: Double, context: NSManagedObjectContext = CoreDataStack.context){
+    convenience init(name: String, color: String, notes: String, pairsWellWith: String, picture: UIImage, producer: String, rating: Double, context: NSManagedObjectContext = CoreDataStack.context){
         
         self.init(context: context)
         
@@ -18,7 +18,7 @@ extension Wine {
         self.color = color
         self.notes = notes
         self.pairsWellWith = pairsWellWith
-        self.picture = picture
+        self.picture =  picture.pngData()
         self.producer = producer
         self.rating = rating
         

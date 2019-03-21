@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wSE-7v-FSx">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Wine ListVC-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="WineListVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="WineListVC" customModule="WineCellar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WKj-6r-jwF">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WineTableViewCell" rowHeight="230" id="9jJ-0T-W88">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="230"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9jJ-0T-W88" id="mBL-oy-M04">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="229.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d5U-g1-mY5">
+                                                    <rect key="frame" x="15" y="11" width="114" height="188"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="WineName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dm8-7P-XNY">
+                                                    <rect key="frame" x="137" y="11" width="226" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fji-YR-cIU">
+                                                    <rect key="frame" x="137" y="71" width="226" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqt-ef-L4I">
+                                                    <rect key="frame" x="137" y="40" width="226" height="23"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="WKj-6r-jwF" secondAttribute="bottom" id="FiS-SM-wxb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WKj-6r-jwF" secondAttribute="trailing" id="Sd7-ON-tI2"/>
+                            <constraint firstItem="WKj-6r-jwF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="W9T-yC-rWm"/>
+                            <constraint firstItem="WKj-6r-jwF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="d46-jw-gUq"/>
+                            <constraint firstItem="WKj-6r-jwF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="nQn-z6-IZB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="oEG-ZZ-p8E">
+                        <barButtonItem key="leftBarButtonItem" id="Ujf-yn-j6u">
+                            <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="peS-qz-S9J">
+                                <rect key="frame" x="16" y="6.5" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="RfX-Sw-rAj">
+                            <connections>
+                                <segue destination="l6a-Ey-i06" kind="show" id="9IN-VM-O0Y"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1872.8" y="-564.46776611694156"/>
+        </scene>
+        <!--Detail CreateVC-->
+        <scene sceneID="sCE-mM-f3l">
+            <objects>
+                <viewController id="l6a-Ey-i06" customClass="Detail_CreateVC" customModule="WineCellar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="au8-eR-NfW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fbV-ZU-3My">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ejZ-2y-CVw" userLabel="content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IXD-lN-sdL">
+                                                <rect key="frame" x="123" y="198" width="128" height="46"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Add Photo"/>
+                                                <connections>
+                                                    <segue destination="Bq9-OJ-Qy2" kind="show" id="WRk-7b-OXT"/>
+                                                </connections>
+                                            </button>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="WPx-T5-d9H">
+                                                <rect key="frame" x="8" y="335" width="359" height="29"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <segments>
+                                                    <segment title="Red"/>
+                                                    <segment title="White"/>
+                                                    <segment title="Sparkling"/>
+                                                </segments>
+                                                <color key="tintColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                                            </segmentedControl>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="IYD-kh-rmi">
+                                                <rect key="frame" x="8" y="437" width="359" height="54"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notes:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ldu-nm-cen">
+                                                <rect key="frame" x="8" y="499" width="128" height="24"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pairs well with:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7U-9G-ixO">
+                                                <rect key="frame" x="8" y="409" width="136" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Producer/Winery" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n0U-K9-3eb">
+                                                <rect key="frame" x="8" y="371" width="359" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VoK-Rp-zqx">
+                                                <rect key="frame" x="8" y="531" width="359" height="128"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="Vzn-wk-E4F">
+                                                <rect key="frame" x="2" y="298" width="367" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <connections>
+                                                    <action selector="sliderWasTapped:" destination="l6a-Ey-i06" eventType="valueChanged" id="e7L-YS-V3Y"/>
+                                                </connections>
+                                            </slider>
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Wine Name " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6W4-Tx-LTb">
+                                                <rect key="frame" x="8" y="252" width="359" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rating:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvV-JN-G4a">
+                                                <rect key="frame" x="8" y="280" width="86" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T82-5K-CBc">
+                                                <rect key="frame" x="8" y="105" width="86" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="noImage" translatesAutoresizingMaskIntoConstraints="NO" id="gHH-lO-unz">
+                                        <rect key="frame" x="110" y="8" width="154" height="177"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ejZ-2y-CVw" firstAttribute="centerX" secondItem="fbV-ZU-3My" secondAttribute="centerX" id="19K-WA-cVK"/>
+                                    <constraint firstAttribute="bottom" secondItem="ejZ-2y-CVw" secondAttribute="bottom" id="8B7-Mq-0LB"/>
+                                    <constraint firstItem="ejZ-2y-CVw" firstAttribute="centerY" secondItem="fbV-ZU-3My" secondAttribute="centerY" id="A1a-wM-80O"/>
+                                    <constraint firstItem="ejZ-2y-CVw" firstAttribute="top" secondItem="fbV-ZU-3My" secondAttribute="top" id="nqK-cL-5ge"/>
+                                    <constraint firstItem="ejZ-2y-CVw" firstAttribute="leading" secondItem="fbV-ZU-3My" secondAttribute="leading" id="owe-HU-WUo"/>
+                                    <constraint firstAttribute="trailing" secondItem="ejZ-2y-CVw" secondAttribute="trailing" id="t5C-7w-TQF"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fbV-ZU-3My" firstAttribute="bottom" secondItem="au8-eR-NfW" secondAttribute="bottom" id="alP-kL-bzf"/>
+                            <constraint firstItem="fbV-ZU-3My" firstAttribute="top" secondItem="au8-eR-NfW" secondAttribute="top" id="coW-LQ-eBY"/>
+                            <constraint firstItem="fbV-ZU-3My" firstAttribute="trailing" secondItem="au8-eR-NfW" secondAttribute="trailing" id="dSt-yN-mrn"/>
+                            <constraint firstItem="fbV-ZU-3My" firstAttribute="leading" secondItem="au8-eR-NfW" secondAttribute="leading" id="etw-ku-SUP"/>
+                            <constraint firstItem="fbV-ZU-3My" firstAttribute="centerX" secondItem="au8-eR-NfW" secondAttribute="centerX" id="yip-DW-mJL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Dc6-Wl-yVk"/>
+                    </view>
+                    <connections>
+                        <outlet property="colorSegmentController" destination="WPx-T5-d9H" id="MMu-Qh-wAU"/>
+                        <outlet property="notesTextView" destination="VoK-Rp-zqx" id="2df-zk-c33"/>
+                        <outlet property="pairsWellWithTextVIew" destination="IYD-kh-rmi" id="49v-tz-0Zk"/>
+                        <outlet property="producerTextField" destination="n0U-K9-3eb" id="aeE-Ql-Vxi"/>
+                        <outlet property="ratingLabel" destination="T82-5K-CBc" id="XJq-n2-ndy"/>
+                        <outlet property="wineImageOutlet" destination="gHH-lO-unz" id="oBA-Us-Okf"/>
+                        <outlet property="wineNameTextField" destination="6W4-Tx-LTb" id="EZ1-LP-LJM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7oC-dV-PF2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2847.1999999999998" y="-564.46776611694156"/>
+        </scene>
+        <!--Camera PreviewVC-->
+        <scene sceneID="4L9-ej-wU0">
+            <objects>
+                <viewController id="Bq9-OJ-Qy2" customClass="CameraPreviewVC" customModule="WineCellar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sAU-1x-7m5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="weQ-WK-o1Q">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DgP-oS-tRW">
+                                        <rect key="frame" x="158" y="433" width="58" height="122"/>
+                                        <state key="normal" image="cameraButton"/>
+                                        <connections>
+                                            <action selector="snapPhotoButtonTapped:" destination="Bq9-OJ-Qy2" eventType="touchUpInside" id="ibW-5D-Boq"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="DgP-oS-tRW" firstAttribute="leading" secondItem="weQ-WK-o1Q" secondAttribute="leading" constant="158" id="FnG-BW-Hmi"/>
+                                    <constraint firstAttribute="trailing" secondItem="DgP-oS-tRW" secondAttribute="trailing" constant="159" id="qp3-pr-MMN"/>
+                                    <constraint firstAttribute="bottom" secondItem="DgP-oS-tRW" secondAttribute="bottom" constant="48" id="rdm-48-kEg"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jeE-jn-FAy">
+                                <rect key="frame" x="15" y="77" width="345" height="387"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="weQ-WK-o1Q" firstAttribute="leading" secondItem="sAU-1x-7m5" secondAttribute="leading" id="16x-pa-JWW"/>
+                            <constraint firstAttribute="bottom" secondItem="weQ-WK-o1Q" secondAttribute="bottom" id="2RW-wx-ogK"/>
+                            <constraint firstItem="jeE-jn-FAy" firstAttribute="top" secondItem="eEd-jG-Qfh" secondAttribute="top" constant="13" id="40I-FK-o13"/>
+                            <constraint firstItem="jeE-jn-FAy" firstAttribute="leading" secondItem="eEd-jG-Qfh" secondAttribute="leading" constant="15" id="QxL-sz-GI4"/>
+                            <constraint firstItem="eEd-jG-Qfh" firstAttribute="trailing" secondItem="jeE-jn-FAy" secondAttribute="trailing" constant="15" id="SPf-FW-Q16"/>
+                            <constraint firstItem="weQ-WK-o1Q" firstAttribute="top" secondItem="sAU-1x-7m5" secondAttribute="top" constant="64" id="brh-Av-Fv0"/>
+                            <constraint firstItem="eEd-jG-Qfh" firstAttribute="bottom" secondItem="jeE-jn-FAy" secondAttribute="bottom" constant="203" id="sl4-Wv-1l0"/>
+                            <constraint firstItem="weQ-WK-o1Q" firstAttribute="centerX" secondItem="sAU-1x-7m5" secondAttribute="centerX" id="tHg-Md-ZNH"/>
+                            <constraint firstItem="jeE-jn-FAy" firstAttribute="centerX" secondItem="sAU-1x-7m5" secondAttribute="centerX" id="ulR-OR-e0g"/>
+                            <constraint firstAttribute="trailing" secondItem="weQ-WK-o1Q" secondAttribute="trailing" id="yrT-z2-Rhw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="eEd-jG-Qfh"/>
+                    </view>
+                    <connections>
+                        <outlet property="cameraButton" destination="DgP-oS-tRW" id="3M5-dh-Ae0"/>
+                        <outlet property="cameraPreview" destination="weQ-WK-o1Q" id="j0E-S6-ZcR"/>
+                        <outlet property="cameraView" destination="jeE-jn-FAy" id="4xc-Cv-P3P"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5FT-SR-JBy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3760.8000000000002" y="-564.46776611694156"/>
+        </scene>
+        <!--User Check ScreenVC-->
+        <scene sceneID="Ol2-OG-3Sb">
+            <objects>
+                <viewController id="AhG-St-J0I" customClass="UserCheckScreenVC" customModule="WineCellar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="J3r-po-fRh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wineGlasses" translatesAutoresizingMaskIntoConstraints="NO" id="AaI-q4-jWe">
+                                <rect key="frame" x="120" y="266" width="135" height="135"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="135" id="Hto-Q9-l9v"/>
+                                    <constraint firstAttribute="height" constant="135" id="vXf-U7-2cR"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="AaI-q4-jWe" firstAttribute="centerX" secondItem="J3r-po-fRh" secondAttribute="centerX" id="L8U-Pp-8XR"/>
+                            <constraint firstItem="AaI-q4-jWe" firstAttribute="centerY" secondItem="J3r-po-fRh" secondAttribute="centerY" id="Pvi-Ar-UM3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="E6b-Wn-rkv"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="TIV-VJ-hdr"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JI6-Cs-GZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-252" y="-564.46776611694156"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="G8R-sQ-Eyh">
+            <objects>
+                <navigationController storyboardIdentifier="WineListNavController" automaticallyAdjustsScrollViewInsets="NO" id="t9X-2d-7pA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NPT-RG-P3a">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Hke-0s-wZt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1nP-kN-Z28" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="780" y="-564.46776611694156"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="5OL-9v-1fw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wSE-7v-FSx" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ntb-U5-geA">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="AhG-St-J0I" kind="relationship" relationship="rootViewController" id="04h-0V-SbN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="afL-UZ-iLV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1191.2" y="-564.46776611694156"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="cameraButton" width="122" height="122"/>
+        <image name="noImage" width="500" height="500"/>
+        <image name="wineGlasses" width="75" height="75"/>
+    </resources>
+</document>

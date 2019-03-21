@@ -6,18 +6,18 @@
 //  Copyright © 2019 Hayden Murdock. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreData
 
 class WineController {
     
     //CRUD AND WINE ARRAY
     
-    static let wineController = WineController()
+    static let shared = WineController()
     
     var wines: [Wine] = []
     
-    func createWine(name: String, color: String, notes: String, pairsWellWith: String, picture: Data, producer: String, rating: Double){
+    func createWine(name: String, color: String, notes: String, pairsWellWith: String, picture: UIImage, producer: String, rating: Double){
         
         let createdWine = Wine(name: name, color: color, notes: notes, pairsWellWith: pairsWellWith, picture: picture, producer: producer, rating: rating)
         
@@ -35,5 +35,14 @@ class WineController {
         }
         CoreDataStack.context.delete(enteredWine)
     }
+    
+    func fetchAllItems() -> [Wine]? {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Wine")
+        
+        let results = try? CoreDataStack.context.fetch(fetchRequest)
+        print("Wines were fetched from CoreData")
+        return results as? [Wine]
+    }
 }
+
 

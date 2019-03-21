@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F74F7CF0223C486100EC2D66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74F7CEF223C486100EC2D66 /* AppDelegate.swift */; };
-		F74F7CF2223C486100EC2D66 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74F7CF1223C486100EC2D66 /* ViewController.swift */; };
 		F74F7CF5223C486100EC2D66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F74F7CF3223C486100EC2D66 /* Main.storyboard */; };
 		F74F7CF8223C486100EC2D66 /* WineCellar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F74F7CF6223C486100EC2D66 /* WineCellar.xcdatamodeld */; };
 		F74F7CFA223C486500EC2D66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F74F7CF9223C486500EC2D66 /* Assets.xcassets */; };
@@ -18,12 +17,13 @@
 		F74F7D0A223C49F400EC2D66 /* WineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74F7D09223C49F400EC2D66 /* WineController.swift */; };
 		F74F7D0C223FF98D00EC2D66 /* Detail&CreateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74F7D0B223FF98D00EC2D66 /* Detail&CreateVC.swift */; };
 		F74F7D0E224002D200EC2D66 /* CameraPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74F7D0D224002D200EC2D66 /* CameraPreviewVC.swift */; };
+		F76BF53F224426A70063642A /* UserCheckScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76BF53E224426A70063642A /* UserCheckScreenVC.swift */; };
+		F76BF54122442FDF0063642A /* WineListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76BF54022442FDF0063642A /* WineListVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F74F7CEC223C486100EC2D66 /* WineCellar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WineCellar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F74F7CEF223C486100EC2D66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F74F7CF1223C486100EC2D66 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F74F7CF4223C486100EC2D66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F74F7CF7223C486100EC2D66 /* WineCellar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WineCellar.xcdatamodel; sourceTree = "<group>"; };
 		F74F7CF9223C486500EC2D66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -34,6 +34,8 @@
 		F74F7D09223C49F400EC2D66 /* WineController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineController.swift; sourceTree = "<group>"; };
 		F74F7D0B223FF98D00EC2D66 /* Detail&CreateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Detail&CreateVC.swift"; sourceTree = "<group>"; };
 		F74F7D0D224002D200EC2D66 /* CameraPreviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewVC.swift; sourceTree = "<group>"; };
+		F76BF53E224426A70063642A /* UserCheckScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCheckScreenVC.swift; sourceTree = "<group>"; };
+		F76BF54022442FDF0063642A /* WineListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineListVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,11 +69,9 @@
 			isa = PBXGroup;
 			children = (
 				F74F7CEF223C486100EC2D66 /* AppDelegate.swift */,
-				F74F7CF1223C486100EC2D66 /* ViewController.swift */,
-				F74F7D09223C49F400EC2D66 /* WineController.swift */,
-				F74F7CF3223C486100EC2D66 /* Main.storyboard */,
-				F74F7D0D224002D200EC2D66 /* CameraPreviewVC.swift */,
-				F74F7D0B223FF98D00EC2D66 /* Detail&CreateVC.swift */,
+				F76BF53B22441DD50063642A /* Model Controller */,
+				F76BF53C22441E060063642A /* Views */,
+				F76BF53D22441E1B0063642A /* ViewControllers */,
 				F74F7CF9223C486500EC2D66 /* Assets.xcassets */,
 				F74F7CFB223C486500EC2D66 /* LaunchScreen.storyboard */,
 				F74F7CFE223C486500EC2D66 /* Info.plist */,
@@ -88,6 +88,33 @@
 				F74F7CF6223C486100EC2D66 /* WineCellar.xcdatamodeld */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F76BF53B22441DD50063642A /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F74F7D09223C49F400EC2D66 /* WineController.swift */,
+			);
+			path = "Model Controller";
+			sourceTree = "<group>";
+		};
+		F76BF53C22441E060063642A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F74F7CF3223C486100EC2D66 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F76BF53D22441E1B0063642A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F74F7D0D224002D200EC2D66 /* CameraPreviewVC.swift */,
+				F76BF54022442FDF0063642A /* WineListVC.swift */,
+				F74F7D0B223FF98D00EC2D66 /* Detail&CreateVC.swift */,
+				F76BF53E224426A70063642A /* UserCheckScreenVC.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,12 +190,13 @@
 			files = (
 				F74F7D0A223C49F400EC2D66 /* WineController.swift in Sources */,
 				F74F7CF8223C486100EC2D66 /* WineCellar.xcdatamodeld in Sources */,
+				F76BF53F224426A70063642A /* UserCheckScreenVC.swift in Sources */,
 				F74F7D0C223FF98D00EC2D66 /* Detail&CreateVC.swift in Sources */,
 				F74F7D07223C494D00EC2D66 /* WineExtension.swift in Sources */,
 				F74F7D0E224002D200EC2D66 /* CameraPreviewVC.swift in Sources */,
-				F74F7CF2223C486100EC2D66 /* ViewController.swift in Sources */,
 				F74F7CF0223C486100EC2D66 /* AppDelegate.swift in Sources */,
 				F74F7D05223C492100EC2D66 /* CoreDataStack.swift in Sources */,
+				F76BF54122442FDF0063642A /* WineListVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

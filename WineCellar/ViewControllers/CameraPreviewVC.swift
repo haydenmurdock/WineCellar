@@ -176,10 +176,7 @@ extension CameraPreviewVC: AVCapturePhotoCaptureDelegate {
             
             detailVC.wineImage = imagePicked
             
-            
-            self.dismiss(animated: true) {
-                print("Camera Preview Controller dismissed")
-            }
+            self.navigationController?.popViewController(animated: true)
         }
         actionSheet.addAction(save)
         actionSheet.addAction(redo)
