@@ -9,6 +9,11 @@
 import UIKit
 import AVFoundation
 
+protocol PassPhotoDelegate: class {
+    func passPhoto(photo: UIImage)
+}
+
+
 class CameraPreviewVC: UIViewController {
     
     
@@ -22,6 +27,9 @@ class CameraPreviewVC: UIViewController {
     var currentCamera: AVCaptureDevice?
     var photoOutput: AVCapturePhotoOutput?
     var cameraPreviewLayer: AVCaptureVideoPreviewLayer?
+    
+    weak var passPhotoDelegate: PassPhotoDelegate?
+    
     
     var wineImage: UIImage?{
         didSet{
@@ -42,8 +50,7 @@ class CameraPreviewVC: UIViewController {
         setupInputOutput()
         setupPreviewLayer()
         startRunningCaptureSession()
-       
-        
+
     }
     
     
@@ -64,8 +71,9 @@ class CameraPreviewVC: UIViewController {
                              kCVPixelBufferHeightKey as String: 20]
         settings.previewPhotoFormat = previewFormat
         
+       
         photoOutput?.capturePhoto(with: settings, delegate: self)
-        endRunningSession()
+        
         showActionSheet()
     }
 }
@@ -135,33 +143,22 @@ extension CameraPreviewVC: AVCapturePhotoCaptureDelegate {
     // we end the session
     func endRunningSession() {
         captureSession.stopRunning()
-        guard let photoOutput = photoOutput else {
+        guard let _ = photoOutput else {
             print("no photo output")
             return
         }
-        
-        captureSession.removeOutput(photoOutput)
+
+//        captureSession.removeOutput(photoOutput)
     }
 
-    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photoSampleBuffer: CMSampleBuffer?, previewPhoto previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
-        if let error = error {
-            print(error.localizedDescription)
-        }
-        
-        if let sampleBuffer = photoSampleBuffer, let previewBuffer = previewPhotoSampleBuffer, let dataImage =
-            AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: sampleBuffer, previewPhotoSampleBuffer: previewBuffer) {
-            
-            let dataProvider = CGDataProvider(data: dataImage as CFData)
-            let cgImageRef: CGImage! = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: .defaultIntent)
-            let image = UIImage(cgImage: cgImageRef, scale: 4, orientation: .up)
-    
-            self.wineImage = image
-            
-            
-        }
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        if let imageData = photo.fileDataRepresentation(){
+           wineImage = UIImage(data: imageData)
     }
-    
+}
+
     @objc func showActionSheet() {
+        
         
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
@@ -171,16 +168,20 @@ extension CameraPreviewVC: AVCapturePhotoCaptureDelegate {
         }
         
         let save = UIAlertAction(title: "Save Photo", style: .default) { (action) in
-            let imagePicked = self.wineImage
-            let detailVC = Detail_CreateVC()
-            
-            detailVC.wineImage = imagePicked
+            guard let imagePicked = self.wineImage else {
+                print("no photo to pass along")
+                return
+            }
+           
+            self.passPhotoDelegate?.passPhoto(photo: imagePicked)
             
             self.navigationController?.popViewController(animated: true)
         }
         actionSheet.addAction(save)
         actionSheet.addAction(redo)
         
-        present(actionSheet, animated: true, completion: nil)
+        self.present(actionSheet, animated: true) {
+            self.endRunningSession()
+        }
     }
 }

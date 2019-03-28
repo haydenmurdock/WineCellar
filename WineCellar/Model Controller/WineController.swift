@@ -17,9 +17,12 @@ class WineController {
     
     var wines: [Wine] = []
     
-    func createWine(name: String, color: String, notes: String, pairsWellWith: String, picture: UIImage, producer: String, rating: Double){
+    
+    func createWine(name: String, color: String, notes: String, pairsWellWith: String, picture: UIImage, producer: String, rating: String){
         
         let createdWine = Wine(name: name, color: color, notes: notes, pairsWellWith: pairsWellWith, picture: picture, producer: producer, rating: rating)
+        
+        print("\(String(describing: createdWine.name)) has been created")
         
         wines.append(createdWine)
         
@@ -43,6 +46,7 @@ class WineController {
         print("Wines were fetched from CoreData")
         return results as? [Wine]
     }
+    
 }
 
 

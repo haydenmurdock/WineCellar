@@ -10,7 +10,7 @@ import CoreData
 import UIKit
 
 extension Wine {
-    convenience init(name: String, color: String, notes: String, pairsWellWith: String, picture: UIImage, producer: String, rating: Double, context: NSManagedObjectContext = CoreDataStack.context){
+    convenience init(name: String, color: String, notes: String, pairsWellWith: String, picture: UIImage, producer: String, rating: String, context: NSManagedObjectContext = CoreDataStack.context){
         
         self.init(context: context)
         
