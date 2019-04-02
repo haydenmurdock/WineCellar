@@ -20,25 +20,20 @@ class DetailandCreateVC: UIViewController {
     
     var wine: Wine?
     
-    
     var wineImage: UIImage?{
         didSet{
             print("image has been passed along. \(String(describing: self.wineImage))")
         }
     }
-    
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        let cameraVC = CameraPreviewVC()
-        cameraVC.passPhotoDelegate = self
-    }
+        updateView()
     
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let cameraVC = CameraPreviewVC()
-        cameraVC.passPhotoDelegate = self
+        
     }
 
     @IBAction func sliderWasTapped(_ sender: UISlider) {
@@ -67,11 +62,52 @@ class DetailandCreateVC: UIViewController {
         }
     }
     
-}
+    func getWineColorIndex(wine: Wine)->Int{
+        if wine.color == "Red"{
+            return 0
+        } else if wine.color == "White"{
+            return 1
+        } else {
+            return 2
+        }
+    }
+    
+    func updateView() {
+        if wineImage != nil {
+            wineImageOutlet.image = wineImage
+        }
+        if wine != nil {
+            guard let wine = wine,let picture = wine.picture else {
+                return
+            }
+            let wineColorIndex = getWineColorIndex(wine: wine)
+            colorSegmentController.selectedSegmentIndex = wineColorIndex
+            ratingLabel.text = wine.rating
+            wineNameTextField.text = wine.name
+            producerTextField.text = wine.producer
+            pairsWellWithTextVIew.text = wine.pairsWellWith
+            notesTextView.text = wine.notes
+            wineImageOutlet.image = UIImage(data: picture)
+            wineImage = UIImage(data: picture)
+        }
+    }
 
-extension DetailandCreateVC: PassPhotoDelegate {
-    func passPhoto(photo: UIImage) {
-        wineImageOutlet.image = photo
-        print("This fuction ran")
+    @IBAction func saveButtonTouched(_ sender: Any) {
+        let color = checkWineColor(wineColorIndex: colorSegmentController.selectedSegmentIndex)
+        print("save Button Touched")
+        guard let image = wineImage, let name = wineNameTextField.text,let rating = ratingLabel.text, let notes = notesTextView.text, let producer = producerTextField.text, let pairsWellWith = pairsWellWithTextVIew.text else {
+            print("Information was missing and couldn't create Wine")
+            return
+        }
+        if wine == nil{
+            WineController.shared.createWine(name: name, color: color, notes: notes, pairsWellWith: pairsWellWith, picture: image, producer: producer, rating: rating)
+        } else {
+            guard let wineToUpdate = wine, let wineDataImage = image.pngData() else {
+                return
+            }
+            WineController.shared.updateWine(wineToUpdate: wineToUpdate, name: name, color: color, notes: notes, pairsWellWith: pairsWellWith, picture: wineDataImage, producer: producer, rating: rating)
+        }
+        navigationController?.popToRootViewController(animated: true)
     }
 }
+

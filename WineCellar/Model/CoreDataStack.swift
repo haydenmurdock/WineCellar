@@ -13,7 +13,7 @@ class CoreDataStack {
     static var container: NSPersistentContainer = {
         
         //creating the container
-        let container = NSPersistentContainer(name: "Model")
+        let container = NSPersistentContainer(name: "WineCellar")
         //load the container
         container.loadPersistentStores(completionHandler: { (discription, error) in
             if let error = error {

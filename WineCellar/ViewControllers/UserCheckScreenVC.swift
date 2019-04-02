@@ -26,7 +26,7 @@ class UserCheckScreenVC: UIViewController {
         guard let itemsFetched = WineController.shared.fetchAllItems() else {
             return
         }
-        
+        print("There are a total of \(itemsFetched.count) items fetched")
         for item in itemsFetched  {
                 if WineController.shared.wines.contains(item) {
                     

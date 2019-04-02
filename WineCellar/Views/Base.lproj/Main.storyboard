@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WineTableViewCell" rowHeight="230" id="9jJ-0T-W88">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WineTableViewCell" rowHeight="230" id="9jJ-0T-W88" customClass="WineCellarTableViewCell" customModule="WineCellar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="230"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9jJ-0T-W88" id="mBL-oy-M04">
@@ -40,7 +40,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fji-YR-cIU">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fji-YR-cIU">
                                                     <rect key="frame" x="137" y="71" width="226" height="128"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -57,6 +57,13 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="notesTextView" destination="fji-YR-cIU" id="Rmc-mp-GeF"/>
+                                            <outlet property="ratingLabel" destination="dqt-ef-L4I" id="8Wf-as-cUZ"/>
+                                            <outlet property="wineImage" destination="d5U-g1-mY5" id="bkG-OV-rf0"/>
+                                            <outlet property="wineNameLabel" destination="dm8-7P-XNY" id="qfK-Fv-Uh7"/>
+                                            <segue destination="l6a-Ey-i06" kind="show" identifier="toDetailFromTableViewCell" id="nd3-75-qz1"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -84,6 +91,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="WKj-6r-jwF" id="ghE-Hk-PjU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -215,7 +225,7 @@
                     <navigationItem key="navigationItem" id="MDv-8C-CWu">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="Yud-5J-9Yq">
                             <connections>
-                                <action selector="saveButtonTapped:" destination="l6a-Ey-i06" id="o3h-Wt-GgN"/>
+                                <action selector="saveButtonTouched:" destination="l6a-Ey-i06" id="D0R-DB-aN3"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -283,11 +293,44 @@
                         <outlet property="cameraButton" destination="DgP-oS-tRW" id="3M5-dh-Ae0"/>
                         <outlet property="cameraPreview" destination="weQ-WK-o1Q" id="j0E-S6-ZcR"/>
                         <outlet property="cameraView" destination="jeE-jn-FAy" id="4xc-Cv-P3P"/>
+                        <segue destination="89Z-fW-cmT" kind="show" identifier="toCameraSaveVC" id="FCl-AK-WPa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5FT-SR-JBy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3760.8000000000002" y="-564.46776611694156"/>
+        </scene>
+        <!--Camera SaveVC-->
+        <scene sceneID="g46-wC-Mvm">
+            <objects>
+                <viewController storyboardIdentifier="CameraSaveVC" id="89Z-fW-cmT" customClass="CameraSaveVC" customModule="WineCellar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Lyx-hL-pwa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bm1-my-aOQ">
+                                <rect key="frame" x="15" y="77" width="345" height="387"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="VDs-00-oPU"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="PPs-no-YlD">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ZFb-H9-s54">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="89Z-fW-cmT" id="YZt-k9-vwT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="winePreviewImageView" destination="Bm1-my-aOQ" id="RtS-5F-p6w"/>
+                        <segue destination="l6a-Ey-i06" kind="show" identifier="backToDetailVC" id="zgi-8g-LEp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gbF-dD-2xR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4729" y="-564"/>
         </scene>
         <!--User Check ScreenVC-->
         <scene sceneID="Ol2-OG-3Sb">
@@ -361,4 +404,7 @@
         <image name="noImage" width="250" height="250"/>
         <image name="wineGlasses" width="37.5" height="37.5"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="nd3-75-qz1"/>
+    </inferredMetricsTieBreakers>
 </document>

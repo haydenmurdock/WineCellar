@@ -9,9 +9,7 @@
 import UIKit
 import AVFoundation
 
-protocol PassPhotoDelegate: class {
-    func passPhoto(photo: UIImage)
-}
+
 
 
 class CameraPreviewVC: UIViewController {
@@ -28,9 +26,6 @@ class CameraPreviewVC: UIViewController {
     var photoOutput: AVCapturePhotoOutput?
     var cameraPreviewLayer: AVCaptureVideoPreviewLayer?
     
-    weak var passPhotoDelegate: PassPhotoDelegate?
-    
-    
     var wineImage: UIImage?{
         didSet{
             print("Image has been saved")
@@ -44,13 +39,11 @@ class CameraPreviewVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
         setupCaptureSession()
         setupDevice()
         setupInputOutput()
         setupPreviewLayer()
         startRunningCaptureSession()
-
     }
     
     
@@ -73,8 +66,17 @@ class CameraPreviewVC: UIViewController {
         
        
         photoOutput?.capturePhoto(with: settings, delegate: self)
-        
-        showActionSheet()
+        }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toCameraSaveVC"{
+            let imageToSend = wineImage
+            guard let destinationVC = segue.destination as? CameraSaveVC else {
+                return
+            }
+            destinationVC.wineImage = imageToSend
+           
+        }
     }
 }
 
@@ -99,7 +101,6 @@ extension CameraPreviewVC: AVCapturePhotoCaptureDelegate {
             }
         }
         currentCamera = backCamera
-        
     }
     // we setup input/output
     func setupInputOutput() {
@@ -107,12 +108,14 @@ extension CameraPreviewVC: AVCapturePhotoCaptureDelegate {
             
             let captureDeviceInput = try AVCaptureDeviceInput(device: currentCamera!)
             // we run this logic so there isn't multiple inputs
+           
             if captureSession.inputs.isEmpty{
                 captureSession.addInput(captureDeviceInput)
-            }
+           }
             photoOutput = AVCapturePhotoOutput()
             photoOutput?.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [AVVideoCodecKey : AVVideoCodecType.jpeg])], completionHandler: nil)
             // we run this logic so there isn't multiple outputs
+    
             if captureSession.outputs.isEmpty {
                 captureSession.addOutput(photoOutput!)
             }
@@ -147,41 +150,40 @@ extension CameraPreviewVC: AVCapturePhotoCaptureDelegate {
             print("no photo output")
             return
         }
-
 //        captureSession.removeOutput(photoOutput)
     }
 
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         if let imageData = photo.fileDataRepresentation(){
            wineImage = UIImage(data: imageData)
-    }
-}
-
-    @objc func showActionSheet() {
-        
-        
-        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
-        let redo = UIAlertAction(title: "Redo", style: .destructive) { (action) in
-            self.startRunningCaptureSession()
-          
-        }
-        
-        let save = UIAlertAction(title: "Save Photo", style: .default) { (action) in
-            guard let imagePicked = self.wineImage else {
-                print("no photo to pass along")
-                return
-            }
-           
-            self.passPhotoDelegate?.passPhoto(photo: imagePicked)
-            
-            self.navigationController?.popViewController(animated: true)
-        }
-        actionSheet.addAction(save)
-        actionSheet.addAction(redo)
-        
-        self.present(actionSheet, animated: true) {
-            self.endRunningSession()
+            performSegue(withIdentifier: "toCameraSaveVC", sender: nil)
+            endRunningSession()
         }
     }
+//    @objc func showActionSheet() {
+//
+//
+//        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+//
+//        let redo = UIAlertAction(title: "Redo", style: .destructive) { (action) in
+//            self.startRunningCaptureSession()
+//
+//        }
+//
+//        let save = UIAlertAction(title: "Save Photo", style: .default) { (action) in
+//            guard let imagePicked = self.wineImage else {
+//                print("no photo to pass along")
+//                return
+//            }
+//
+//
+//
+//        }
+//        actionSheet.addAction(save)
+//        actionSheet.addAction(redo)
+//
+//        self.present(actionSheet, animated: true) {
+//            self.endRunningSession()
+//        }
+//    }
 }

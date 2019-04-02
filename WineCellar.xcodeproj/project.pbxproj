@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F708C9C5224EB16A00A4B518 /* CameraSaveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F708C9C4224EB16A00A4B518 /* CameraSaveVC.swift */; };
 		F74F7CF0223C486100EC2D66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74F7CEF223C486100EC2D66 /* AppDelegate.swift */; };
 		F74F7CF5223C486100EC2D66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F74F7CF3223C486100EC2D66 /* Main.storyboard */; };
 		F74F7CF8223C486100EC2D66 /* WineCellar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F74F7CF6223C486100EC2D66 /* WineCellar.xcdatamodeld */; };
@@ -19,9 +20,11 @@
 		F74F7D0E224002D200EC2D66 /* CameraPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74F7D0D224002D200EC2D66 /* CameraPreviewVC.swift */; };
 		F76BF53F224426A70063642A /* UserCheckScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76BF53E224426A70063642A /* UserCheckScreenVC.swift */; };
 		F76BF54122442FDF0063642A /* WineListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76BF54022442FDF0063642A /* WineListVC.swift */; };
+		F7EF2D712252C33800B07F6E /* WineCellarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EF2D702252C33800B07F6E /* WineCellarTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F708C9C4224EB16A00A4B518 /* CameraSaveVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraSaveVC.swift; sourceTree = "<group>"; };
 		F74F7CEC223C486100EC2D66 /* WineCellar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WineCellar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F74F7CEF223C486100EC2D66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F74F7CF4223C486100EC2D66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -36,6 +39,7 @@
 		F74F7D0D224002D200EC2D66 /* CameraPreviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewVC.swift; sourceTree = "<group>"; };
 		F76BF53E224426A70063642A /* UserCheckScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCheckScreenVC.swift; sourceTree = "<group>"; };
 		F76BF54022442FDF0063642A /* WineListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineListVC.swift; sourceTree = "<group>"; };
+		F7EF2D702252C33800B07F6E /* WineCellarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineCellarTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				F74F7CF3223C486100EC2D66 /* Main.storyboard */,
+				F7EF2D702252C33800B07F6E /* WineCellarTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -109,10 +114,11 @@
 		F76BF53D22441E1B0063642A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				F74F7D0D224002D200EC2D66 /* CameraPreviewVC.swift */,
+				F76BF53E224426A70063642A /* UserCheckScreenVC.swift */,
 				F76BF54022442FDF0063642A /* WineListVC.swift */,
 				F74F7D0B223FF98D00EC2D66 /* DetailandCreateVC.swift */,
-				F76BF53E224426A70063642A /* UserCheckScreenVC.swift */,
+				F74F7D0D224002D200EC2D66 /* CameraPreviewVC.swift */,
+				F708C9C4224EB16A00A4B518 /* CameraSaveVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -188,6 +194,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F708C9C5224EB16A00A4B518 /* CameraSaveVC.swift in Sources */,
 				F74F7D0A223C49F400EC2D66 /* WineController.swift in Sources */,
 				F74F7CF8223C486100EC2D66 /* WineCellar.xcdatamodeld in Sources */,
 				F76BF53F224426A70063642A /* UserCheckScreenVC.swift in Sources */,
@@ -195,6 +202,7 @@
 				F74F7D07223C494D00EC2D66 /* WineExtension.swift in Sources */,
 				F74F7D0E224002D200EC2D66 /* CameraPreviewVC.swift in Sources */,
 				F74F7CF0223C486100EC2D66 /* AppDelegate.swift in Sources */,
+				F7EF2D712252C33800B07F6E /* WineCellarTableViewCell.swift in Sources */,
 				F74F7D05223C492100EC2D66 /* CoreDataStack.swift in Sources */,
 				F76BF54122442FDF0063642A /* WineListVC.swift in Sources */,
 			);
@@ -352,7 +360,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.haydenmurdock.WineCellar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -370,7 +378,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.haydenmurdock.WineCellar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
