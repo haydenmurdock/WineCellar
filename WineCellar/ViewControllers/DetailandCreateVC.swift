@@ -15,8 +15,9 @@ class DetailandCreateVC: UIViewController {
     @IBOutlet weak var wineNameTextField: UITextField!
     @IBOutlet weak var colorSegmentController: UISegmentedControl!
     @IBOutlet weak var producerTextField: UITextField!
-    @IBOutlet weak var pairsWellWithTextVIew: UITextView!
+    @IBOutlet weak var pairsWellWithTextView: UITextView!
     @IBOutlet weak var notesTextView: UITextView!
+    @IBOutlet weak var wineRatingSlider: UISlider!
     
     var wine: Wine?
     
@@ -40,7 +41,7 @@ class DetailandCreateVC: UIViewController {
     ratingLabel.text = String(round(sender.value))
     }
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
-        guard let wineName = wineNameTextField.text, let rating = ratingLabel.text, let producer = producerTextField.text, let pairsWithText = pairsWellWithTextVIew.text, let notes = notesTextView.text, let image = wineImageOutlet.image else {
+        guard let wineName = wineNameTextField.text, let rating = ratingLabel.text, let producer = producerTextField.text, let pairsWithText = pairsWellWithTextView.text, let notes = notesTextView.text, let image = wineImageOutlet.image else {
         return
         }
         let wineColor = checkWineColor(wineColorIndex: colorSegmentController.selectedSegmentIndex)
@@ -73,20 +74,25 @@ class DetailandCreateVC: UIViewController {
     }
     
     func updateView() {
+        notesTextView.addDoneButtonOnKeyboard()
+        notesTextView.delegate = self
+        pairsWellWithTextView.addDoneButtonOnKeyboard()
+        
         if wineImage != nil {
             wineImageOutlet.image = wineImage
         }
         if wine != nil {
-            guard let wine = wine,let picture = wine.picture else {
+            guard let wine = wine,let picture = wine.picture, let rating = wine.rating, let ratingSlider = Float(rating) else {
                 return
             }
             let wineColorIndex = getWineColorIndex(wine: wine)
             colorSegmentController.selectedSegmentIndex = wineColorIndex
-            ratingLabel.text = wine.rating
+            ratingLabel.text = "Rating: \(rating)"
             wineNameTextField.text = wine.name
             producerTextField.text = wine.producer
-            pairsWellWithTextVIew.text = wine.pairsWellWith
+            pairsWellWithTextView.text = wine.pairsWellWith
             notesTextView.text = wine.notes
+            wineRatingSlider.value = ratingSlider
             wineImageOutlet.image = UIImage(data: picture)
             wineImage = UIImage(data: picture)
         }
@@ -95,7 +101,7 @@ class DetailandCreateVC: UIViewController {
     @IBAction func saveButtonTouched(_ sender: Any) {
         let color = checkWineColor(wineColorIndex: colorSegmentController.selectedSegmentIndex)
         print("save Button Touched")
-        guard let image = wineImage, let name = wineNameTextField.text,let rating = ratingLabel.text, let notes = notesTextView.text, let producer = producerTextField.text, let pairsWellWith = pairsWellWithTextVIew.text else {
+        guard let image = wineImage, let name = wineNameTextField.text,let rating = ratingLabel.text, let notes = notesTextView.text, let producer = producerTextField.text, let pairsWellWith = pairsWellWithTextView.text else {
             print("Information was missing and couldn't create Wine")
             return
         }
@@ -111,3 +117,24 @@ class DetailandCreateVC: UIViewController {
     }
 }
 
+extension DetailandCreateVC: UITextViewDelegate {
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+    if textView.tag == 1 {
+    self.view.frame.origin.y -= 125
+        print("View was moved up 125")
+        }
+    }
+    
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        textView.resignFirstResponder()
+        return true
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.tag == 1 {
+            self.view.frame.origin.y += 125
+            print("View was moved down 125")
+        }
+    }
+}

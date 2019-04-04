@@ -64,5 +64,8 @@ class WineListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
    
-
+    @IBAction func switchTapped(_ sender: UISwitch) {
+        print("switch was tapped")
+       // performSegue(withIdentifier: "showCollectionView", sender: self)
+    }
 }
