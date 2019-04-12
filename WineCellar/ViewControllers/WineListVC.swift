@@ -11,13 +11,27 @@ import UIKit
 class WineListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var collectionView: UIView!
+    @IBOutlet weak var collectionV: UICollectionView!
+    @IBOutlet var noItemsView: UIView!
+    
+    
     
     var wineImage: UIImage?
+    var collectionViewShowing: Bool = false
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        checkForNoItemView()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         tableView.reloadData()
+        collectionV.delegate = self
+        collectionV.dataSource = self 
         print("There are a total of \(WineController.shared.wines.count) amount of wines in Array")
+        checkForNoItemView()
     }
 
     override func viewDidLoad() {
@@ -65,7 +79,86 @@ class WineListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
    
     @IBAction func switchTapped(_ sender: UISwitch) {
-        print("switch was tapped")
-       // performSegue(withIdentifier: "showCollectionView", sender: self)
+        
+        guard let itemsFetched = WineController.shared.fetchAllItems() else {
+            return
+        }
+        print("There are a total of \(itemsFetched.count) items fetched")
+        for item in itemsFetched  {
+            if WineController.shared.wines.contains(item) {
+                
+            }else {
+                WineController.shared.wines.append(item)
+            }
+        }
+        
+        if collectionViewShowing == false {
+            self.view.addSubview(collectionView)
+            collectionView.center = tableView.center
+            collectionView.frame = tableView.frame
+            collectionViewShowing = true
+        } else {
+            collectionView.removeFromSuperview()
+            collectionViewShowing = false
+        }
+    }
+    
+    @IBAction func deleteXhit(_ sender: Any) {
+        showAlertController()
+        
+    }
+    
+    func showAlertController() {
+        let alertController = UIAlertController(title: "", message: "Do you want to delete this wine", preferredStyle: .alert)
+        
+        let deleteActionItem = UIAlertAction(title: "Delete", style: .default) { (_) in
+            
+            
+//            let wine =
+//
+//            WineController.shared.removeWine(enteredWine: <#T##Wine#>)
+        }
+        let cancelActionItem = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alertController.addAction(deleteActionItem)
+        alertController.addAction(cancelActionItem)
+        
+        present(alertController, animated: true)
+        
+    }
+    
+}
+
+extension WineListVC: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return WineController.shared.wines.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionV.dequeueReusableCell(withReuseIdentifier: "wineCollectionViewCell", for: indexPath) as? WineCellarCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        let wine = WineController.shared.wines[indexPath.row]
+        cell.wine = wine
+        cell.updateView()
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let desVC = storyboard.instantiateViewController(withIdentifier: "detailAndCreateVC") as! DetailandCreateVC
+        let wineToSend = WineController.shared.wines[indexPath.row]
+        desVC.wine = wineToSend
+        self.navigationController?.pushViewController(desVC, animated: true)
+    }
+    
+    func checkForNoItemView() {
+        if WineController.shared.wines.count == 0 {
+           
+            noItemsView.frame = tableView.frame
+            noItemsView.center = tableView.center
+            self.view.addSubview(noItemsView)
+        }
     }
 }

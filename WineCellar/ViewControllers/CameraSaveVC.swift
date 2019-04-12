@@ -49,6 +49,5 @@ class CameraSaveVC: UIViewController {
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
       performSegue(withIdentifier: "backToDetailVC", sender: nil)
         
- 
     }
 }

@@ -21,7 +21,7 @@ class CustomViewButton: UIButton {
     }
     
     private func setUpButton() {
-        backgroundColor = UIColor.red
+        backgroundColor = UIColor(displayP3Red: 230/255, green: 75/255, blue: 95/255, alpha: 1)
        layer.cornerRadius = frame.size.height/2
     }
 }

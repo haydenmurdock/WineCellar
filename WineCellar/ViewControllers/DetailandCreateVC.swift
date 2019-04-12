@@ -18,6 +18,8 @@ class DetailandCreateVC: UIViewController {
     @IBOutlet weak var pairsWellWithTextView: UITextView!
     @IBOutlet weak var notesTextView: UITextView!
     @IBOutlet weak var wineRatingSlider: UISlider!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var addPhotoButton: CustomViewButton!
     
     var wine: Wine?
     
@@ -26,6 +28,8 @@ class DetailandCreateVC: UIViewController {
             print("image has been passed along. \(String(describing: self.wineImage))")
         }
     }
+    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         updateView()
@@ -38,7 +42,7 @@ class DetailandCreateVC: UIViewController {
     }
 
     @IBAction func sliderWasTapped(_ sender: UISlider) {
-    ratingLabel.text = String(round(sender.value))
+        ratingLabel.text = ("Rating: \(String(round(sender.value)))")
     }
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
         guard let wineName = wineNameTextField.text, let rating = ratingLabel.text, let producer = producerTextField.text, let pairsWithText = pairsWellWithTextView.text, let notes = notesTextView.text, let image = wineImageOutlet.image else {
@@ -77,12 +81,18 @@ class DetailandCreateVC: UIViewController {
         notesTextView.addDoneButtonOnKeyboard()
         notesTextView.delegate = self
         pairsWellWithTextView.addDoneButtonOnKeyboard()
+        wineNameTextField.addDoneButtonOnKeyboard()
+        producerTextField.addDoneButtonOnKeyboard()
+        
         
         if wineImage != nil {
             wineImageOutlet.image = wineImage
+            addPhotoButton.isHidden = true
+            
         }
         if wine != nil {
             guard let wine = wine,let picture = wine.picture, let rating = wine.rating, let ratingSlider = Float(rating) else {
+                print("wine isn't here")
                 return
             }
             let wineColorIndex = getWineColorIndex(wine: wine)
@@ -95,16 +105,22 @@ class DetailandCreateVC: UIViewController {
             wineRatingSlider.value = ratingSlider
             wineImageOutlet.image = UIImage(data: picture)
             wineImage = UIImage(data: picture)
+            addPhotoButton.isHidden = true
+    
         }
     }
 
     @IBAction func saveButtonTouched(_ sender: Any) {
         let color = checkWineColor(wineColorIndex: colorSegmentController.selectedSegmentIndex)
-        print("save Button Touched")
-        guard let image = wineImage, let name = wineNameTextField.text,let rating = ratingLabel.text, let notes = notesTextView.text, let producer = producerTextField.text, let pairsWellWith = pairsWellWithTextView.text else {
-            print("Information was missing and couldn't create Wine")
+        guard let image = wineImage,  let name = wineNameTextField.text else {
+            showAlertController()
             return
         }
+        let rating = ratingLabel.text ?? ""
+        let notes = notesTextView.text ?? ""
+        let producer = producerTextField.text ?? ""
+        let pairsWellWith = pairsWellWithTextView.text ?? ""
+        
         if wine == nil{
             WineController.shared.createWine(name: name, color: color, notes: notes, pairsWellWith: pairsWellWith, picture: image, producer: producer, rating: rating)
         } else {
@@ -114,6 +130,16 @@ class DetailandCreateVC: UIViewController {
             WineController.shared.updateWine(wineToUpdate: wineToUpdate, name: name, color: color, notes: notes, pairsWellWith: pairsWellWith, picture: wineDataImage, producer: producer, rating: rating)
         }
         navigationController?.popToRootViewController(animated: true)
+    }
+    func showAlertController() {
+        let alertController = UIAlertController(title: "", message: "Make sure your wine has a picture and a name ", preferredStyle: .alert)
+        
+        let cancelActionItem = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alertController.addAction(cancelActionItem)
+        
+        present(alertController, animated: true)
+        
     }
 }
 

@@ -9,9 +9,6 @@
 import UIKit
 import AVFoundation
 
-
-
-
 class CameraPreviewVC: UIViewController {
     
     
@@ -25,6 +22,7 @@ class CameraPreviewVC: UIViewController {
     var currentCamera: AVCaptureDevice?
     var photoOutput: AVCapturePhotoOutput?
     var cameraPreviewLayer: AVCaptureVideoPreviewLayer?
+    let imagePicker = UIImagePickerController()
     
     var wineImage: UIImage?{
         didSet{
@@ -49,7 +47,10 @@ class CameraPreviewVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        imagePicker.delegate = self
+        imagePicker.sourceType = .savedPhotosAlbum
+        imagePicker.allowsEditing = false
         
     }
     
@@ -78,6 +79,11 @@ class CameraPreviewVC: UIViewController {
            
         }
     }
+    
+    
+    @IBAction func libraryButtonTapped(_ sender: Any) {
+        present(imagePicker, animated: true)
+    }
 }
 
 extension CameraPreviewVC: AVCapturePhotoCaptureDelegate {
@@ -105,7 +111,7 @@ extension CameraPreviewVC: AVCapturePhotoCaptureDelegate {
     // we setup input/output
     func setupInputOutput() {
         do {
-            
+
             let captureDeviceInput = try AVCaptureDeviceInput(device: currentCamera!)
             // we run this logic so there isn't multiple inputs
            
@@ -123,7 +129,6 @@ extension CameraPreviewVC: AVCapturePhotoCaptureDelegate {
         } catch  {
             print(error.localizedDescription)
         }
-        
     }
     
     // we setup the camera layer. It is set to the frame of the cameraView
@@ -150,40 +155,51 @@ extension CameraPreviewVC: AVCapturePhotoCaptureDelegate {
             print("no photo output")
             return
         }
-//        captureSession.removeOutput(photoOutput)
     }
-
-    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-        if let imageData = photo.fileDataRepresentation(){
-           wineImage = UIImage(data: imageData)
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photoSampleBuffer: CMSampleBuffer?, previewPhoto previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
+        if let error = error {
+            print(error.localizedDescription)
+        }
+        
+        if let sampleBuffer = photoSampleBuffer, let previewBuffer = previewPhotoSampleBuffer, let dataImage =
+            AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: sampleBuffer, previewPhotoSampleBuffer: previewBuffer) {
+            
+            let dataProvider = CGDataProvider(data: dataImage as CFData)
+            let cgImageRef: CGImage! = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: .defaultIntent)
+            let image = UIImage(cgImage: cgImageRef, scale: 4, orientation: .right)
+            
+            wineImage = image
             performSegue(withIdentifier: "toCameraSaveVC", sender: nil)
             endRunningSession()
+            
         }
     }
-//    @objc func showActionSheet() {
-//
-//
-//        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-//
-//        let redo = UIAlertAction(title: "Redo", style: .destructive) { (action) in
-//            self.startRunningCaptureSession()
-//
-//        }
-//
-//        let save = UIAlertAction(title: "Save Photo", style: .default) { (action) in
-//            guard let imagePicked = self.wineImage else {
-//                print("no photo to pass along")
-//                return
-//            }
-//
-//
-//
-//        }
-//        actionSheet.addAction(save)
-//        actionSheet.addAction(redo)
-//
-//        self.present(actionSheet, animated: true) {
-//            self.endRunningSession()
-//        }
-//    }
+}
+
+extension CameraPreviewVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        // Local variable inserted by Swift 4.2 migrator.
+        let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+        
+        let imagePicked = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage
+        self.wineImage = imagePicked
+        performSegue(withIdentifier: "toCameraSaveVC", sender: nil)
+        print("imagePickerController func called")
+        dismiss(animated: true)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        print("image picker has been canceled")
+        dismiss(animated: true)
+    }
+}
+
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+    return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+    return input.rawValue
 }

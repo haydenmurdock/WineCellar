@@ -18,7 +18,7 @@ extension Wine {
         self.color = color
         self.notes = notes
         self.pairsWellWith = pairsWellWith
-        self.picture =  picture.pngData()
+        self.picture =  picture.jpegData(compressionQuality: 1.0)
         self.producer = producer
         self.rating = rating
         
