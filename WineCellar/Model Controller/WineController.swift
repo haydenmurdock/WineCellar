@@ -39,6 +39,18 @@ class WineController {
         }
     }
     
+    func removeWineReturnIndex(enteredWine: Wine)->Int{
+        for (index,wine) in wines.enumerated(){
+            if wine == enteredWine {
+                print("\(String(describing: enteredWine.name)) is being removed at \(index)")
+                wines.remove(at: index)
+                CoreDataStack.context.delete(enteredWine)
+                CoreDataStack.saveContext()
+                return index
+            }
+        }
+        return 0
+    }
     func updateWine(wineToUpdate: Wine, name: String, color: String, notes: String, pairsWellWith: String, picture: Data, producer: String, rating: String){
         
         wineToUpdate.setValue(name, forKey: "name")

@@ -29,7 +29,7 @@ class WineListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewWillAppear(true)
         tableView.reloadData()
         collectionV.delegate = self
-        collectionV.dataSource = self 
+        collectionV.dataSource = self
         print("There are a total of \(WineController.shared.wines.count) amount of wines in Array")
         checkForNoItemView()
     }
@@ -102,31 +102,6 @@ class WineListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             collectionViewShowing = false
         }
     }
-    
-    @IBAction func deleteXhit(_ sender: Any) {
-        showAlertController()
-        
-    }
-    
-    func showAlertController() {
-        let alertController = UIAlertController(title: "", message: "Do you want to delete this wine", preferredStyle: .alert)
-        
-        let deleteActionItem = UIAlertAction(title: "Delete", style: .default) { (_) in
-            
-            
-//            let wine =
-//
-//            WineController.shared.removeWine(enteredWine: <#T##Wine#>)
-        }
-        let cancelActionItem = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
-        alertController.addAction(deleteActionItem)
-        alertController.addAction(cancelActionItem)
-        
-        present(alertController, animated: true)
-        
-    }
-    
 }
 
 extension WineListVC: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -141,6 +116,7 @@ extension WineListVC: UICollectionViewDataSource, UICollectionViewDelegate {
         let wine = WineController.shared.wines[indexPath.row]
         cell.wine = wine
         cell.updateView()
+        cell.delegate = self 
         return cell
     }
     
@@ -160,5 +136,35 @@ extension WineListVC: UICollectionViewDataSource, UICollectionViewDelegate {
             noItemsView.center = tableView.center
             self.view.addSubview(noItemsView)
         }
+    }
+}
+
+
+extension WineListVC: collectionViewDelegate{
+    func deleteWineOnCell(_ cell: WineCellarCollectionViewCell) {
+        guard let wineToDelete = cell.wine, let wineName = wineToDelete.name else {
+            return
+        }
+        
+            let alertController = UIAlertController(title: "", message: "Do you want to delete \(wineName)", preferredStyle: .alert)
+            
+            let deleteActionItem = UIAlertAction(title: "Delete", style: .default) { (_) in
+                
+                let indexToDelete = WineController.shared.removeWineReturnIndex(enteredWine: wineToDelete)
+                
+                let indexPath = IndexPath(row: indexToDelete, section: 0)
+                
+                self.collectionV.performBatchUpdates({
+                    self.collectionV.deleteItems(at: [indexPath])
+                }) { (finished) in
+                    self.collectionV.reloadData()
+                }
+            }
+            let cancelActionItem = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            
+            alertController.addAction(deleteActionItem)
+            alertController.addAction(cancelActionItem)
+            
+            present(alertController, animated: true)
     }
 }

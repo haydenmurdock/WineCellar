@@ -91,7 +91,7 @@ class DetailandCreateVC: UIViewController {
             
         }
         if wine != nil {
-            guard let wine = wine,let picture = wine.picture, let rating = wine.rating, let ratingSlider = Float(rating) else {
+            guard let wine = wine,let picture = wine.picture, let rating = wine.rating, let ratingForSlider = Float(rating) else {
                 print("wine isn't here")
                 return
             }
@@ -102,7 +102,7 @@ class DetailandCreateVC: UIViewController {
             producerTextField.text = wine.producer
             pairsWellWithTextView.text = wine.pairsWellWith
             notesTextView.text = wine.notes
-            wineRatingSlider.value = ratingSlider
+            wineRatingSlider.value = ratingForSlider
             wineImageOutlet.image = UIImage(data: picture)
             wineImage = UIImage(data: picture)
             addPhotoButton.isHidden = true
@@ -116,7 +116,9 @@ class DetailandCreateVC: UIViewController {
             showAlertController()
             return
         }
-        let rating = ratingLabel.text ?? ""
+        let correctRatingLabel = ratingLabel.text?.replacingOccurrences(of: "Rating:", with: "")
+        let correctRatingLabelWithoutSpaces = correctRatingLabel?.replacingOccurrences(of: " ", with: "")
+        let rating = correctRatingLabelWithoutSpaces ?? ""
         let notes = notesTextView.text ?? ""
         let producer = producerTextField.text ?? ""
         let pairsWellWith = pairsWellWithTextView.text ?? ""
