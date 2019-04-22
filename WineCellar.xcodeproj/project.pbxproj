@@ -23,6 +23,9 @@
 		F78271772256C38800C7EAFF /* WineCellarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78271762256C38800C7EAFF /* WineCellarCollectionViewCell.swift */; };
 		F7C54552225691C80069DFED /* CustomViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C54551225691C70069DFED /* CustomViewButton.swift */; };
 		F7C545562256974B0069DFED /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C545552256974B0069DFED /* Extensions.swift */; };
+		F7E567C1226E2A2F007A4D45 /* QuoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E567C0226E2A2F007A4D45 /* QuoteViewController.swift */; };
+		F7E567C3226E2A7F007A4D45 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E567C2226E2A7F007A4D45 /* Quote.swift */; };
+		F7E567C5226E2AE2007A4D45 /* QuoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E567C4226E2AE2007A4D45 /* QuoteController.swift */; };
 		F7EF2D712252C33800B07F6E /* WineCellarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EF2D702252C33800B07F6E /* WineCellarTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +48,9 @@
 		F78271762256C38800C7EAFF /* WineCellarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineCellarCollectionViewCell.swift; sourceTree = "<group>"; };
 		F7C54551225691C70069DFED /* CustomViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewButton.swift; sourceTree = "<group>"; };
 		F7C545552256974B0069DFED /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		F7E567C0226E2A2F007A4D45 /* QuoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteViewController.swift; sourceTree = "<group>"; };
+		F7E567C2226E2A7F007A4D45 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
+		F7E567C4226E2AE2007A4D45 /* QuoteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteController.swift; sourceTree = "<group>"; };
 		F7EF2D702252C33800B07F6E /* WineCellarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineCellarTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,6 +70,7 @@
 			children = (
 				F74F7CEE223C486100EC2D66 /* WineCellar */,
 				F74F7CED223C486100EC2D66 /* Products */,
+				F7C0211B2266623A00BA2221 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,6 +101,7 @@
 		F74F7D08223C496C00EC2D66 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F7E567C2226E2A7F007A4D45 /* Quote.swift */,
 				F74F7D04223C492100EC2D66 /* CoreDataStack.swift */,
 				F74F7D06223C494D00EC2D66 /* WineExtension.swift */,
 				F74F7CF6223C486100EC2D66 /* WineCellar.xcdatamodeld */,
@@ -105,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				F74F7D09223C49F400EC2D66 /* WineController.swift */,
+				F7E567C4226E2AE2007A4D45 /* QuoteController.swift */,
 			);
 			path = "Model Controller";
 			sourceTree = "<group>";
@@ -122,6 +131,7 @@
 		F76BF53D22441E1B0063642A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F7E567C0226E2A2F007A4D45 /* QuoteViewController.swift */,
 				F76BF53E224426A70063642A /* UserCheckScreenVC.swift */,
 				F76BF54022442FDF0063642A /* WineListVC.swift */,
 				F74F7D0B223FF98D00EC2D66 /* DetailandCreateVC.swift */,
@@ -129,6 +139,13 @@
 				F708C9C4224EB16A00A4B518 /* CameraSaveVC.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F7C0211B2266623A00BA2221 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		F7C545532256956B0069DFED /* CustomViews */ = {
@@ -181,6 +198,11 @@
 					F74F7CEB223C486100EC2D66 = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1020;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -224,11 +246,14 @@
 				F74F7D0A223C49F400EC2D66 /* WineController.swift in Sources */,
 				F74F7CF8223C486100EC2D66 /* WineCellar.xcdatamodeld in Sources */,
 				F7C54552225691C80069DFED /* CustomViewButton.swift in Sources */,
+				F7E567C3226E2A7F007A4D45 /* Quote.swift in Sources */,
+				F7E567C5226E2AE2007A4D45 /* QuoteController.swift in Sources */,
 				F76BF53F224426A70063642A /* UserCheckScreenVC.swift in Sources */,
 				F74F7D0C223FF98D00EC2D66 /* DetailandCreateVC.swift in Sources */,
 				F74F7D07223C494D00EC2D66 /* WineExtension.swift in Sources */,
 				F74F7D0E224002D200EC2D66 /* CameraPreviewVC.swift in Sources */,
 				F7C545562256974B0069DFED /* Extensions.swift in Sources */,
+				F7E567C1226E2A2F007A4D45 /* QuoteViewController.swift in Sources */,
 				F74F7CF0223C486100EC2D66 /* AppDelegate.swift in Sources */,
 				F78271772256C38800C7EAFF /* WineCellarCollectionViewCell.swift in Sources */,
 				F7EF2D712252C33800B07F6E /* WineCellarTableViewCell.swift in Sources */,
