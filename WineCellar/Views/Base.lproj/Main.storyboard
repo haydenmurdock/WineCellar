@@ -323,11 +323,11 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T82-5K-CBc">
-                                                <rect key="frame" x="8" y="102" width="82.5" height="20"/>
+                                                <rect key="frame" x="4" y="102" width="86.5" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="Y7z-5h-Cwa"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -383,7 +383,7 @@
                                         <constraints>
                                             <constraint firstItem="gHH-lO-unz" firstAttribute="centerX" secondItem="ejZ-2y-CVw" secondAttribute="centerX" id="1AO-Zk-9kb"/>
                                             <constraint firstItem="Ldu-nm-cen" firstAttribute="top" secondItem="IYD-kh-rmi" secondAttribute="bottom" constant="8" id="3K9-Hw-pzj"/>
-                                            <constraint firstItem="T82-5K-CBc" firstAttribute="leading" secondItem="ejZ-2y-CVw" secondAttribute="leading" constant="8" id="69l-b0-Vvp"/>
+                                            <constraint firstItem="T82-5K-CBc" firstAttribute="leading" secondItem="ejZ-2y-CVw" secondAttribute="leading" constant="4" id="69l-b0-Vvp"/>
                                             <constraint firstItem="Ldu-nm-cen" firstAttribute="leading" secondItem="ejZ-2y-CVw" secondAttribute="leading" constant="8" id="7QB-d1-hqX"/>
                                             <constraint firstItem="VoK-Rp-zqx" firstAttribute="leading" secondItem="ejZ-2y-CVw" secondAttribute="leading" constant="8" id="8XB-9B-KhT"/>
                                             <constraint firstItem="IXD-lN-sdL" firstAttribute="leading" secondItem="gHH-lO-unz" secondAttribute="trailing" constant="34.5" id="BzA-Uz-y1e"/>

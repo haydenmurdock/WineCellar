@@ -37,11 +37,9 @@ class UserCheckScreenVC: UIViewController {
     }
     
     func nextVC() {
-        
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "WineListVC") as! WineListVC
         self.navigationController?.pushViewController(nextViewController, animated: true)
     }
-    
 }
 

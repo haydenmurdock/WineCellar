@@ -98,8 +98,13 @@ class WineListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             collectionView.frame = tableView.frame
             collectionViewShowing = true
         } else {
-            collectionView.removeFromSuperview()
-            collectionViewShowing = false
+            UIView.transition(with: collectionView,
+                             duration: 2.0, options:
+            [.transitionFlipFromLeft], animations:
+           collectionView.removeFromSuperview) { (true) in
+            self.collectionViewShowing = false
+         
+            }
         }
     }
 }
